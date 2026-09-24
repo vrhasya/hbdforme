@@ -10,13 +10,40 @@ const overlay=document.getElementById("countOverlay"),countNumber=document.getEl
 const sh=document.getElementById("shatter"),shctx=sh.getContext("2d");
 function sizeShatter(){sh.width=innerWidth*devicePixelRatio;sh.height=innerHeight*devicePixelRatio;sh.style.width=innerWidth+"px";sh.style.height=innerHeight+"px";shctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
 sizeShatter();addEventListener("resize",sizeShatter);
-function shatterBurst(){let a=[];for(let i=0;i<180;i++)a.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*18,vy:(Math.random()-.5)*18,r:Math.random()*5+1,l:100+Math.random()*100});function frame(){shctx.clearRect(0,0,innerWidth,innerHeight);let alive=false;for(const q of a){q.x+=q.vx;q.y+=q.vy;q.vy+=.08;q.l--;if(q.l>0){alive=true;shctx.globalAlpha=q.l/150;shctx.fillStyle="#d8d8e0";shctx.fillRect(q.x,q.y,q.r*2,q.r*2)}}if(alive)requestAnimationFrame(frame)}frame()}
+function shatterBurst(){let a=[];for(let i=0;i<180;i++)a.push({x:innerWidth/2,y:innerHeight/2,vx:(Math.random()-.5)*18,vy:(Math.random()-.5)*18,r:Math.random()*5+1,l:100+Math.random()*100});function frame(){shctx.clearRect(0,0,innerWidth,innerHeight);let alive=false;for(const q of a){q.x+=q.vx;q.y+=q.vy;q.vy+=.08;q.l--;if(q.l>0){alive=true;shctx.globalAlpha=q.l/150;shctx.fillStyle="#00ff88";shctx.fillRect(q.x,q.y,q.r*2,q.r*2)}}if(alive)requestAnimationFrame(frame)}frame()}
 function startOpening(){let n=3;const tick=setInterval(()=>{n--;if(n>0){countNumber.textContent=n;countNumber.style.animation="none";void countNumber.offsetWidth;countNumber.style.animation="countPulse .8s ease"}else{clearInterval(tick);countNumber.textContent="✦";setTimeout(()=>{shatterBurst();overlay.classList.add("hide");setTimeout(()=>overlay.remove(),1100)},550)}},900)}
 setTimeout(startOpening,700);
 
 function pad(n){return String(n).padStart(2,"0")}
 function update(){const now=new Date(),diff=target-Date.now();document.getElementById("clock").textContent=now.toLocaleTimeString("id-ID",{hour12:false})+" WIB";if(diff<=0){if(!celebrated){celebrated=true;countScreen.classList.add("hidden");birthday.classList.remove("hidden");document.getElementById("autoLetter").classList.add("show");}return}document.getElementById("d").textContent=pad(Math.floor(diff/86400000));document.getElementById("h").textContent=pad(Math.floor(diff%86400000/3600000));document.getElementById("m").textContent=pad(Math.floor(diff%3600000/60000));document.getElementById("s").textContent=pad(Math.floor(diff%60000/1000))}
 setInterval(update,1000);update();
+
+
+// Hacker-style Matrix rain background
+const matrix=document.getElementById("matrix"), mctx=matrix.getContext("2d");
+let drops=[], fontSize=14, matrixChars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]<>/$#@%";
+function resizeMatrix(){
+ const d=devicePixelRatio||1; matrix.width=innerWidth*d; matrix.height=innerHeight*d;
+ matrix.style.width=innerWidth+"px"; matrix.style.height=innerHeight+"px";
+ mctx.setTransform(d,0,0,d,0,0);
+ const cols=Math.ceil(innerWidth/fontSize);
+ drops=Array.from({length:cols},()=>Math.random()*-40);
+}
+function matrixLoop(){
+ mctx.fillStyle="rgba(1,5,4,.075)";mctx.fillRect(0,0,innerWidth,innerHeight);
+ mctx.font=fontSize+"px 'JetBrains Mono',monospace";
+ for(let i=0;i<drops.length;i++){
+   const ch=matrixChars[Math.floor(Math.random()*matrixChars.length)];
+   const x=i*fontSize,y=drops[i]*fontSize;
+   mctx.fillStyle=Math.random()>.92?"#baffd8":"#00b85f";
+   mctx.globalAlpha=.25+Math.random()*.5;mctx.fillText(ch,x,y);
+   mctx.globalAlpha=1;
+   if(y>innerHeight && Math.random()>.975)drops[i]=0;
+   drops[i]+=.55+Math.random()*.7;
+ }
+ requestAnimationFrame(matrixLoop);
+}
+resizeMatrix();addEventListener("resize",resizeMatrix);matrixLoop();
 
 const star=document.getElementById("stars"),ctx=star.getContext("2d"),fx=document.getElementById("fx"),fctx=fx.getContext("2d");let stars=[],parts=[];
 function resize(){const d=devicePixelRatio||1;[star,fx].forEach(c=>{c.width=innerWidth*d;c.height=innerHeight*d;c.style.width=innerWidth+"px";c.style.height=innerHeight+"px"});ctx.setTransform(d,0,0,d,0,0);fctx.setTransform(d,0,0,d,0,0);stars=Array.from({length:120},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:.2+Math.random()*1.2,a:Math.random()*6.28,v:.002+Math.random()*.008}))}

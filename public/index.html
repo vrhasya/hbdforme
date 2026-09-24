@@ -10,22 +10,22 @@
 <body>
 <div id="countOverlay"><div id="countNumber">3</div></div>
 <canvas id="shatter"></canvas>
-<canvas id="stars"></canvas><canvas id="fx"></canvas>
-<div class="aurora"></div><div class="vignette"></div><div class="grain"></div>
+<canvas id="matrix"></canvas><canvas id="stars"></canvas><canvas id="fx"></canvas>
+<div class="aurora"></div><div class="grid"></div><div class="scanlines"></div><div class="vignette"></div><div class="grain"></div>
 <div class="corner left">PRIVATE EXPERIENCE / 25.09</div>
 <div class="corner right" id="clock">00:00:00 WIB</div>
 
 <main class="wrap"><section class="card">
   <div class="screen" id="welcome">
-    <div class="kicker">A Private Moment</div>
+    <div class="terminal-label"><span class="dot"></span> SECURE TERMINAL // ONLINE</div><div class="kicker">A Private Moment</div>
     <div class="hero-date">25.09</div>
-    <div class="subtitle">Luxury Birthday Experience</div>
-    <button class="enter" id="enter">ENTER EXPERIENCE</button>
+    <div class="subtitle">PRIVATE BIRTHDAY PROTOCOL</div>
+    <button class="enter" id="enter">INITIALIZE EXPERIENCE</button>
     <div class="meta">PLEASE TURN UP YOUR VOLUME</div>
   </div>
 
   <div class="screen hidden" id="countScreen">
-    <div class="kicker">The moment is approaching</div>
+    <div class="terminal-label"><span class="dot"></span> SYSTEM CLOCK // COUNTDOWN</div><div class="kicker">The moment is approaching</div>
     <div class="hero-date small-date">00:00</div>
     <div class="subtitle">25 SEPTEMBER 2026 • 00:00 WIB</div>
     <div class="countdown">
@@ -36,14 +36,14 @@
     </div>
     <div class="meta">SOMETHING BEAUTIFUL IS ABOUT TO BEGIN</div>
     <div class="actions countdown-actions">
-      <button class="btn" id="openWishCountdown">SEND WISH</button>
+      <button class="btn" id="openWishCountdown">SEND MESSAGE</button>
     </div>
   </div>
 
   <div class="screen birthday hidden" id="birthday">
-    <div class="kicker">00:00 • 25 September 2026</div>
-    <h1 class="chromeTitle">Happy Birthday</h1>
-    <div class="date2">TO SOMEONE ANONYMOUS</div>
+    <div class="terminal-label"><span class="dot"></span> ACCESS GRANTED // 25.09.2026</div><div class="kicker">00:00 • 25 September 2026</div>
+    <div class="glitch" data-text="HAPPY BIRTHDAY">HAPPY BIRTHDAY</div>
+    <div class="date2">// TO SOMEONE ANONYMOUS // <span>ROOT@BIRTHDAY:~$</span></div>
     <p class="lead">Selamat ulang tahun untuk seseorang yang memilih tetap anonim. Semoga bab baru ini dipenuhi hal-hal baik, cerita indah, dan banyak alasan untuk tersenyum.</p>
 
     <div id="autoLetter">
@@ -54,9 +54,9 @@
     </div>
 
     <div class="actions">
-      <button class="btn" id="openLetter">OPEN MESSAGE</button>
-      <button class="btn" id="openWish">SEND WISH</button>
-      <button class="btn" id="share">SHARE EXPERIENCE</button>
+      <button class="btn" id="openLetter">OPEN TERMINAL</button>
+      <button class="btn" id="openWish">SEND MESSAGE</button>
+      <button class="btn" id="share">SHARE PROTOCOL</button>
     </div>
   </div>
 </section></main>
@@ -65,7 +65,7 @@
 
 <div class="modal hidden" id="modal">
   <div class="letter">
-    <div class="kicker">A Little Note</div><h2>For You</h2>
+    <div class="terminal-label"><span class="dot"></span> ENCRYPTED MESSAGE</div><h2>For You</h2>
     <p>Hari ini adalah milikmu. Tidak perlu nama, tidak perlu sorotan. Cukup satu hari untuk merayakan perjalanan yang sudah kamu lewati dan semua hal baik yang masih menunggu di depan.</p>
     <button class="btn close" id="close">CLOSE</button>
   </div>
@@ -73,7 +73,7 @@
 
 <div class="modal hidden" id="wishModal">
   <div class="letter wish-box">
-    <div class="kicker">A Message For You</div>
+    <div class="terminal-label"><span class="dot"></span> TRANSMISSION CHANNEL</div>
     <h2>Send a Wish</h2>
     <input id="wishName" maxlength="60" placeholder="Nama (opsional)">
     <textarea id="wishMessage" maxlength="800" placeholder="Tulis ucapan..." rows="5"></textarea>
