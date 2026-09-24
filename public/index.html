@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#030305">
+  <title>Luxury Birthday Experience — 25.09</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="countOverlay"><div id="countNumber">3</div></div>
+<canvas id="shatter"></canvas>
+<canvas id="stars"></canvas><canvas id="fx"></canvas>
+<div class="aurora"></div><div class="vignette"></div><div class="grain"></div>
+<div class="corner left">PRIVATE EXPERIENCE / 25.09</div>
+<div class="corner right" id="clock">00:00:00 WIB</div>
+
+<main class="wrap"><section class="card">
+  <div class="screen" id="welcome">
+    <div class="kicker">A Private Moment</div>
+    <div class="hero-date">25.09</div>
+    <div class="subtitle">Luxury Birthday Experience</div>
+    <button class="enter" id="enter">ENTER EXPERIENCE</button>
+    <div class="meta">PLEASE TURN UP YOUR VOLUME</div>
+  </div>
+
+  <div class="screen hidden" id="countScreen">
+    <div class="kicker">The moment is approaching</div>
+    <div class="hero-date small-date">00:00</div>
+    <div class="subtitle">25 SEPTEMBER 2026 • 00:00 WIB</div>
+    <div class="countdown">
+      <div class="unit"><div class="num" id="d">00</div><div class="lab">DAYS</div></div>
+      <div class="unit"><div class="num" id="h">00</div><div class="lab">HOURS</div></div>
+      <div class="unit"><div class="num" id="m">00</div><div class="lab">MINUTES</div></div>
+      <div class="unit"><div class="num" id="s">00</div><div class="lab">SECONDS</div></div>
+    </div>
+    <div class="meta">SOMETHING BEAUTIFUL IS ABOUT TO BEGIN</div>
+  </div>
+
+  <div class="screen birthday hidden" id="birthday">
+    <div class="kicker">00:00 • 25 September 2026</div>
+    <h1 class="chromeTitle">Happy Birthday</h1>
+    <div class="date2">TO SOMEONE ANONYMOUS</div>
+    <p class="lead">Selamat ulang tahun untuk seseorang yang memilih tetap anonim. Semoga bab baru ini dipenuhi hal-hal baik, cerita indah, dan banyak alasan untuk tersenyum.</p>
+
+    <div id="autoLetter">
+      <div class="letter">
+        <div class="kicker">A Little Note</div>
+        <p>Hari ini adalah milikmu. Tidak perlu nama, tidak perlu sorotan. Cukup satu hari untuk merayakan perjalanan yang sudah kamu lewati dan semua hal baik yang masih menunggu di depan.</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="openLetter">OPEN MESSAGE</button>
+      <button class="btn" id="openWish">SEND WISH</button>
+      <button class="btn" id="share">SHARE EXPERIENCE</button>
+    </div>
+  </div>
+</section></main>
+
+<button class="music paused" id="music" title="Music">♫ <span class="visual"><i class="bar"></i><i class="bar"></i><i class="bar"></i></span></button>
+
+<div class="modal hidden" id="modal">
+  <div class="letter">
+    <div class="kicker">A Little Note</div><h2>For You</h2>
+    <p>Hari ini adalah milikmu. Tidak perlu nama, tidak perlu sorotan. Cukup satu hari untuk merayakan perjalanan yang sudah kamu lewati dan semua hal baik yang masih menunggu di depan.</p>
+    <button class="btn close" id="close">CLOSE</button>
+  </div>
+</div>
+
+<div class="modal hidden" id="wishModal">
+  <div class="letter wish-box">
+    <div class="kicker">A Message For You</div>
+    <h2>Send a Wish</h2>
+    <input id="wishName" maxlength="60" placeholder="Nama (opsional)">
+    <textarea id="wishMessage" maxlength="800" placeholder="Tulis ucapan..." rows="5"></textarea>
+    <div class="quick">
+      <button class="btn quickWish" data-text="Selamat ulang tahun! Semoga semua harapan baikmu tercapai.">HAPPY BIRTHDAY</button>
+      <button class="btn quickWish" data-text="Semoga hari ini menjadi awal dari banyak hal indah.">BEST WISHES</button>
+    </div>
+    <div class="actions">
+      <button class="btn" id="sendWish">SEND</button>
+      <button class="btn closeWish" id="closeWish">CLOSE</button>
+    </div>
+    <div id="wishStatus" class="status"></div>
+  </div>
+</div>
+
+<audio id="audio" loop preload="auto" src="/music.mp3"></audio>
+<script src="/script.js"></script>
+</body>
+</html>
