@@ -28,7 +28,9 @@ document.getElementById("close").onclick=()=>document.getElementById("modal").cl
 document.getElementById("share").onclick=async()=>{try{await navigator.share({title:"Luxury Birthday Experience",text:"A special birthday experience — 25.09",url:location.href})}catch(e){try{await navigator.clipboard.writeText(location.href);alert("Link berhasil disalin.")}catch(x){}}};
 
 const wishModal=document.getElementById("wishModal"),status=document.getElementById("wishStatus");
-document.getElementById("openWish").onclick=()=>{status.textContent="";wishModal.classList.remove("hidden")};
+function openWishModal(){status.textContent="";wishModal.classList.remove("hidden")}
+document.getElementById("openWish").onclick=openWishModal;
+document.getElementById("openWishCountdown").onclick=openWishModal;
 document.getElementById("closeWish").onclick=()=>wishModal.classList.add("hidden");
 document.querySelectorAll(".quickWish").forEach(b=>b.onclick=()=>document.getElementById("wishMessage").value=b.dataset.text);
 
